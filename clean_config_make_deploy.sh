@@ -34,9 +34,9 @@ sudo make ARCH=arm CROSS_COMPILE=${TOOL_PATH}/arm-linux-gnueabihf- INSTALL_MOD_P
 
 #backup / copy Kernel
 sudo cp ${MOUNT_FAT32}/$KERNEL.img ${MOUNT_FAT32}/$KERNEL-backup.img
-sudo cp arch/arm/boot/zImage {MOUNT_FAT32}/$KERNEL.img
+sudo cp arch/arm/boot/zImage ${MOUNT_FAT32}/$KERNEL.img
 sudo cp arch/arm/boot/dts/*.dtb ${MOUNT_FAT32}/
-sudo cp arch/arm/boot/dts/overlays/*.dtb* ${MOUNT_FAT32}/overlays
-sudo cp arch/arm/boot/dts/overlays/README ${MOUNT_FAT32}/overlays
+sudo cp arch/arm/boot/dts/overlays/*.dtb* ${MOUNT_FAT32}/overlays/
+sudo cp arch/arm/boot/dts/overlays/README ${MOUNT_FAT32}/overlays/
 sudo umount ${MOUNT_FAT32}
 sudo umount ${MOUNT_EXT4}
