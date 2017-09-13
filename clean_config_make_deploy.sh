@@ -1,5 +1,6 @@
 #!/bin/bash
-export KERNEL=kernel7
+set -x
+export KERNEL=kernel
 export KERNEL_PATH=/home/lgerber/git/linux_kernel
 export TOOL_PATH=/usr/local/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin
 export AUTO_MOUNT_SDB1=/media/lgerber/boot
@@ -16,11 +17,10 @@ cd ${KERNEL_PATH}
 sudo make ARCH=arm CROSS_COMPILE=${TOOL_PATH}/arm-linux-gnueabihf- distclean
 
 # config
-make ARCH=arm CROSS_COMPILE=${TOOL_PATH}/arm-linux-gnueabihf- bcm2709_defconfig
+make ARCH=arm CROSS_COMPILE=${TOOL_PATH}/arm-linux-gnueabihf- bcmrpi_defconfig
 
 # make
-make -j ${NUMBER_CORES} ARCH=arm CROSS_COMPILE=${TOOL_PATH}/arm-linux-gnueabihf- zImage modules dtbs > makelog.txt
-
+make -j ${NUMBER_CORES} ARCH=arm CROSS_COMPILE=${TOOL_PATH}/arm-linux-gnueabihf- all
 #unmount automounted SD
 umount ${AUTO_MOUNT_SDB1}
 umount ${AUTO_MOUNT_SDB2}
@@ -31,6 +31,12 @@ sudo mount ${SD2} ${MOUNT_EXT4}
 
 #install modules
 sudo make ARCH=arm CROSS_COMPILE=${TOOL_PATH}/arm-linux-gnueabihf- INSTALL_MOD_PATH=${MOUNT_EXT4} modules_install
+
+#install firmware
+sudo make ARCH=arm CROSS_COMPILE=${TOOL_PATH}/arm-linux-gnueabihf- INSTALL_FW_PATH=${MOUNT_FAT32} firmware_install
+
+#install headers
+sudo make ARCH=arm CROSS_COMPILE=${TOOL_PATH}/arm-linux-gnueabihf- INSTALL_HDR_PATH=${MOUNT_EXT4}/usr headers_install
 
 #backup / copy Kernel
 sudo cp ${MOUNT_FAT32}/$KERNEL.img ${MOUNT_FAT32}/$KERNEL-backup.img

@@ -1,4 +1,5 @@
 #!/bin/bash
+set -x
 export KERNEL=kernel7
 export KERNEL_PATH=/home/lgerber/git/linux_kernel
 export TOOL_PATH=/usr/local/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin
@@ -31,6 +32,12 @@ sudo mount ${SD2} ${MOUNT_EXT4}
 
 #install modules
 sudo make ARCH=arm CROSS_COMPILE=${TOOL_PATH}/arm-linux-gnueabihf- INSTALL_MOD_PATH=${MOUNT_EXT4} modules_install
+
+#install firmware
+sudo make ARCH=arm CROSS_COMPILE=${TOOL_PATH}/arm-linux-gnueabihf- INSTALL_FW_PATH=${MOUNT_FAT32} firmware_install
+
+#install headers
+sudo make ARCH=arm CROSS_COMPIEL=${TOOL_PATH}/arm-linux-gnueabihf- INSTALL_HDR_PATH=${MOUNT_EXT4}/usr headers_install 
 
 #backup / copy Kernel
 sudo cp ${MOUNT_FAT32}/$KERNEL.img ${MOUNT_FAT32}/$KERNEL-backup.img
