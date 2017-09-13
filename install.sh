@@ -13,13 +13,13 @@ export NUMBER_CORES=4
 cd ${KERNEL_PATH}
 
 #clean up
-sudo make ARCH=arm CROSS_COMPILE=${TOOL_PATH}/arm-linux-gnueabihf- distclean
+#sudo make ARCH=arm CROSS_COMPILE=${TOOL_PATH}/arm-linux-gnueabihf- distclean
 
 # config
-make ARCH=arm CROSS_COMPILE=${TOOL_PATH}/arm-linux-gnueabihf- bcm2709_defconfig
+#make ARCH=arm CROSS_COMPILE=${TOOL_PATH}/arm-linux-gnueabihf- bcm2709_defconfig
 
 # make
-make -j ${NUMBER_CORES} ARCH=arm CROSS_COMPILE=${TOOL_PATH}/arm-linux-gnueabihf- zImage modules dtbs > makelog.txt
+#make -j ${NUMBER_CORES} ARCH=arm CROSS_COMPILE=${TOOL_PATH}/arm-linux-gnueabihf- zImage modules dtbs > makelog.txt
 
 #unmount automounted SD
 umount ${AUTO_MOUNT_SDB1}
