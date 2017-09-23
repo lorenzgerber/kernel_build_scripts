@@ -1,5 +1,5 @@
 #!/bin/bash
-export KERNEL=kernel7
+export KERNEL=kernel
 export KERNEL_PATH=/home/lgerber/git/linux_kernel
 export TOOL_PATH=/usr/local/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin
 export AUTO_MOUNT_SDB1=/media/lgerber/boot

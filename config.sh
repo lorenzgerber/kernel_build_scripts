@@ -1,5 +1,5 @@
 #!/bin/bash
-export KERNEL=kernel7
+export KERNEL=kernel
 export KERNEL_PATH=/home/lgerber/git/linux_kernel
 export TOOL_PATH=/usr/local/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin
 export AUTO_MOUNT_SDB1=/media/lgerber/boot
@@ -16,7 +16,7 @@ cd ${KERNEL_PATH}
 #sudo make ARCH=arm CROSS_COMPILE=${TOOL_PATH}/arm-linux-gnueabihf- distclean
 
 # config
-make ARCH=arm CROSS_COMPILE=${TOOL_PATH}/arm-linux-gnueabihf- bcm2709_defconfig
+make ARCH=arm CROSS_COMPILE=${TOOL_PATH}/arm-linux-gnueabihf- bcmrpi_defconfig
 
 # make
 #make -j ${NUMBER_CORES} ARCH=arm CROSS_COMPILE=${TOOL_PATH}/arm-linux-gnueabihf- zImage modules dtbs > makelog.txt

@@ -1,6 +1,6 @@
 #!/bin/bash
 set -x
-export KERNEL=kernel7
+export KERNEL=kernel
 export KERNEL_PATH=/home/lgerber/git/linux_kernel
 export TOOL_PATH=/usr/local/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin
 export AUTO_MOUNT_SDB1=/media/lgerber/boot
@@ -34,7 +34,7 @@ sudo mount ${SD2} ${MOUNT_EXT4}
 sudo make ARCH=arm CROSS_COMPILE=${TOOL_PATH}/arm-linux-gnueabihf- INSTALL_MOD_PATH=${MOUNT_EXT4} modules_install
 
 #install firmware
-sudo make ARCH=arm CROSS_COMPILE=${TOOL_PATH}/arm-linux-gnueabihf- INSTALL_FW_PATH=${MOUNT_FAT32} firmware_install
+#sudo make ARCH=arm CROSS_COMPILE=${TOOL_PATH}/arm-linux-gnueabihf- INSTALL_FW_PATH=${MOUNT_FAT32} firmware_install
 
 #install headers
 sudo make ARCH=arm CROSS_COMPIEL=${TOOL_PATH}/arm-linux-gnueabihf- INSTALL_HDR_PATH=${MOUNT_EXT4}/usr headers_install 

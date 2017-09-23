@@ -20,7 +20,7 @@ sudo make ARCH=arm CROSS_COMPILE=${TOOL_PATH}/arm-linux-gnueabihf- distclean
 make ARCH=arm CROSS_COMPILE=${TOOL_PATH}/arm-linux-gnueabihf- bcmrpi_defconfig
 
 # make
-make -j ${NUMBER_CORES} ARCH=arm CROSS_COMPILE=${TOOL_PATH}/arm-linux-gnueabihf- all
+make -j ${NUMBER_CORES} ARCH=arm CROSS_COMPILE=${TOOL_PATH}/arm-linux-gnueabihf- zImage modules dtbs > makelog.txt
 #unmount automounted SD
 umount ${AUTO_MOUNT_SDB1}
 umount ${AUTO_MOUNT_SDB2}
