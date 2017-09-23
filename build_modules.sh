@@ -19,7 +19,7 @@ cd ${KERNEL_PATH}
 #make ARCH=arm CROSS_COMPILE=${TOOL_PATH}/arm-linux-gnueabihf- bcm2709_defconfig
 
 # make
-make -j ${NUMBER_CORES} ARCH=arm CROSS_COMPILE=${TOOL_PATH}/arm-linux-gnueabihf- zImage modules dtbs
+make -j ${NUMBER_CORES} ARCH=arm CROSS_COMPILE=${TOOL_PATH}/arm-linux-gnueabihf- modules
 
 #unmount automounted SD
 #umount ${AUTO_MOUNT_SDB1}
